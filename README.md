@@ -17,7 +17,7 @@
 
 1.克隆该项目；
 
-2.下载项目的资源文件[谷歌](https://drive.google.com/file/d/1cpShLy9mk-gNMA4hg5KfdFznY-OkrgZZ/view?usp=sharing)[私人云盘](http://aclgh.top:5212/s/pqSb)，然后将`res`文件夹复制到项目目录中；
+2.下载项目的资源文件[谷歌](https://drive.google.com/file/d/1cpShLy9mk-gNMA4hg5KfdFznY-OkrgZZ/view?usp=sharing)/[私人云盘](http://aclgh.top:5212/s/pqSb)，然后将`res`文件夹复制到项目目录中；
 
 
 3.在根目录下运行命令安装所需的依赖
@@ -46,7 +46,8 @@ python dxpass_gen.py --rating 15121 --friendcode 123456789 --qr 114514 --cardcha
 | `--output` | string | "./output.png" | 图片输出路径 |
 
 ## 特别鸣谢
-[maicard-py](https://github.com/Error063/maicard)项目提供项目灵感
+[maicard-py](https://github.com/Error063/maicard)项目提供灵感
+
 [fxysk](https://space.bilibili.com/20026067/)提供部分素材
 
 ## TODO List
