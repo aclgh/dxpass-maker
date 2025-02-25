@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ### 通过命令行调用
 以下是一个示例：
 ```sh 
-python dxpass_gen.py --rating 15121 --friendcode 123456789 --qr 114514 --cardchara "000601" --datets 1740323711 --aime "12345678912345678912" --virsion "1.00-0001" --nickname "maimai" --dxtype "freedom" --output "./output.png"
+python dxpass_gen.py --rating 15121 --friendcode 123456789 --qr 114514 --cardchara "000601" --datets 1740323711 --aime "12345678912345678912" --virsion "1.00-0001" --nickname "maimai" --dxtype "freedom" --output "./output.png" --bgnum 1
 ```
 | 参数 | 类型 | 默认值 | 描述 |
 |------|------|--------|------|
@@ -38,6 +38,7 @@ python dxpass_gen.py --rating 15121 --friendcode 123456789 --qr 114514 --cardcha
 | `--friendcode` | int | 123456789 | 玩家好友码，可选项，设为None则不生成好友码一栏 |
 | `--qr` | int | None | 根据字符串生成右下角二维码，留空则使用默认值 |
 | `--cardchara` | string | "000601" | dxpass人物ID |
+| `--bgnum` | int | None | 在背景列表(每次运行会在控制台输出)中指定选择某一背景 |
 | `--datets` | int | 1740323711 | 当前的时间戳，以生成dxpass有效期 |
 | `--aime` | string | "12345678912345678912" | 下方的aime卡号，要求20位 |
 | `--virsion` | string | "1.00-0001" | 下方的版本号，请按默认的格式填写 |

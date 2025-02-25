@@ -21,7 +21,7 @@ DEF_VAL = 15  # 默认有效期为15天
 logging.basicConfig(level=logging.INFO)
 
 
-def call_pass_pic(rating=15000, friendcode=123456789, qr=None, cardchara="000602", charaname="avatar", datets="1740323711", aime="12345678912345678912", virsion="1.00-0001", nickname="maimai", dxtype="freedom"): 
+def call_pass_pic(rating=15000, friendcode=123456789, qr=None, cardchara="000602",bgnum="None", charaname="avatar", datets="1740323711", aime="12345678912345678912", virsion="1.00-0001", nickname="maimai", dxtype="freedom"): 
     img = Image.new("RGBA", (768, 1052), color=(0, 0, 0, 0))
     """charadata"""
     if os.path.exists(os.path.join(JSON_PATH, "A000", "cardChara", f"cardChara0{cardchara}.json")): 
@@ -38,8 +38,12 @@ def call_pass_pic(rating=15000, friendcode=123456789, qr=None, cardchara="000602
         f"UI_CardBase_.*_{base_id}\\.png", f)]  # 使用正则匹配角色背景
     logging.info(f"找到以下对应角色的背景: {base_files}")
     if base_files: 
-        base_file = random.choice(base_files)
-        logging.info(f"即将随机选择: {base_file}")
+        if not bgnum:
+            base_file = random.choice(base_files)
+            logging.info(f"即将随机选择: {base_file}")
+        else:
+            base_file = base_files[bgnum-1]
+            logging.info(f"即将选择第{bgnum}个: {base_file}")
         base_img = Image.open(os.path.join(cardbase_path, base_file))
         img.paste(base_img, (0, 0), base_img)
 
@@ -180,6 +184,7 @@ def main():
     parser.add_argument("--friendcode", type=int, default=123456789, help="玩家好友码")
     parser.add_argument("--qr", type=str, default=None, help="根据字符串生成右下角二维码，留空则使用默认值")
     parser.add_argument("--cardchara", type=str, default="000601", help="dxpass人物ID")
+    parser.add_argument("--bgnum", type=int, default=None, help="指定背景列表中的背景")
     parser.add_argument("--datets", type=int, default=1740323711, help="当前的时间戳，以生成dxpass有效期")
     parser.add_argument("--aime", type=str, default="12345678912345678912", help="下方的aime卡号，要求20位")
     parser.add_argument("--virsion", type=str, default="1.00-0001", help="下方的版本号，请按默认的格式填写")
@@ -188,7 +193,7 @@ def main():
     parser.add_argument("--output", type=str, default="./output.png", help="图片输出路径")
     args = parser.parse_args()  
     start_time = time.time()
-    d = call_pass_pic(rating=args.rating, friendcode=args.friendcode, qr=args.qr, cardchara=args.cardchara, datets=args.datets, aime=args.aime, virsion=args.virsion, nickname=args.nickname, dxtype=args.dxtype)
+    d = call_pass_pic(rating=args.rating, friendcode=args.friendcode, qr=args.qr, cardchara=args.cardchara, bgnum=args.bgnum,datets=args.datets, aime=args.aime, virsion=args.virsion, nickname=args.nickname, dxtype=args.dxtype)
     if d:
         d.save(args.output)
         end_time = time.time()
