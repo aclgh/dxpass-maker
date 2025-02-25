@@ -1,5 +1,5 @@
 # dxpass-maker
-基于piloow模块的dxpass生成器
+基于pillow模块的dxpass生成器
 
 ![output.png](output.png)
 
